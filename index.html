@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Fetch en JS</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-input">
+            <label>Search pokemon:</label><input id="input-id" type="number">
+            <button id="btn-search" class="btn">Search</button>
+        </div>
+        <div class="container-attributes">
+            <label>Name:</label>
+            <p id="paragraph-name"></p>
+
+            <label>Order:</label>
+            <p id="paragraph-order"></p>
+
+            <label>Image:</label><img src="#" id="imagen-pokemon">
+        </div>
+    </div>
+    <script>
+        window.onload = main;
+
+        function main() {
+            let btn = document.getElementById("btn-search");
+            btn.addEventListener("click", btnAction);
+        }
+
+        function btnAction() {
+            let id = document.getElementById("input-id").value;
+            let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+            fetch(url).then(response => response.json() /* <= Esto es la primer promesa que manejamos */)
+                .then(data /* segunda promesa que usamos */ => {
+                    document.getElementById("paragraph-name").innerHTML = `${data.name}`;
+                    document.getElementById("paragraph-order").innerHTML = `${data.order}`;
+                    document.getElementById("imagen-pokemon").src = `${data.sprites.front_default}`;
+                })
+                .catch(err => console.log(err));
+        }
+    </script>
+</body>
+
+</html>
