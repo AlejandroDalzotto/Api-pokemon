@@ -27,11 +27,13 @@ body {
     max-width: 824px;
     border: 2px solid #000;
 }
+
 img {
     width: 324px;
     height: 324px;
     margin: auto;
 }
+
 .container-input {
     background-color: #fff;
     display: flex;
@@ -54,17 +56,4 @@ img {
     padding: .6em .3em;
     margin: 10px;
     border-color: #000;
-}
-
-.btn {
-    border-radius: 10px;
-    border: hidden;
-    width: 90px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    background-color: #a2ff00;
-    padding: .7em .5em;
 }
